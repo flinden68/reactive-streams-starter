@@ -1,4 +1,4 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice;
+package nl.elstarit.reactive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

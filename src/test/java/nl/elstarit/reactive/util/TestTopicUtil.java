@@ -1,6 +1,6 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.util;
+package nl.elstarit.reactive.util;
 
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Topic;
+import nl.elstarit.reactive.model.Topic;
 
 import java.util.ArrayList;
 import java.util.List;

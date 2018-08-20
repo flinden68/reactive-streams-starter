@@ -1,6 +1,6 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.repository;
+package nl.elstarit.reactive.repository;
 
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Preference;
+import nl.elstarit.reactive.model.Preference;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;

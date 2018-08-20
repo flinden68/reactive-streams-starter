@@ -1,8 +1,8 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.controller;
+package nl.elstarit.reactive.controller;
 
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Preference;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.repository.PreferenceRepository;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.util.TestTopicUtil;
+import nl.elstarit.reactive.model.Preference;
+import nl.elstarit.reactive.repository.PreferenceRepository;
+import nl.elstarit.reactive.util.TestTopicUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +40,7 @@ public class PreferenceControllerTest {
 
         preferenceRepository.save(preference).block();
 
-        webTestClient.get().uri("/sector-knowledge/topic-management-service/preference/d367b9e61e6e2ec0c229c45d681538107697704f7f36bcd6bab5283d4070bac3Id")
+        webTestClient.get().uri("/reactive/streams/preference/d367b9e61e6e2ec0c229c45d681538107697704f7f36bcd6bab5283d4070bac3Id")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
@@ -50,7 +50,7 @@ public class PreferenceControllerTest {
 
     @Test
     public void getAllPreferences() {
-        webTestClient.get().uri("/sector-knowledge/topic-management-service/preference/all")
+        webTestClient.get().uri("/reactive/streams/preference/all")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(Preference.class);
@@ -62,7 +62,7 @@ public class PreferenceControllerTest {
         preference.setUserid("d367b9e61e6e2ec0c229c45d681538107697704f7f36bcd6bab5283d4070bac3Save1");
         preference.setTopics(TestTopicUtil.constructTopicsList(2));
 
-        webTestClient.post().uri("/sector-knowledge/topic-management-service/preference/save")
+        webTestClient.post().uri("/reactive/streams/preference/save")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .body(Mono.just(preference), Preference.class)
@@ -83,14 +83,14 @@ public class PreferenceControllerTest {
 
         preferenceRepository.save(preference).block();
 
-        webTestClient.delete().uri("/sector-knowledge/topic-management-service/preference/delete/d367b9e61e6e2ec0c229c45d681538107697704f7f36bcd6bab5283d4070bac3Delete1")
+        webTestClient.delete().uri("/reactive/streams/preference/delete/d367b9e61e6e2ec0c229c45d681538107697704f7f36bcd6bab5283d4070bac3Delete1")
                 .exchange()
                 .expectStatus().isOk();
     }
 
     @Test
     public void deleteAllPreferences() {
-        webTestClient.delete().uri("/sector-knowledge/topic-management-service/preference/delete/all")
+        webTestClient.delete().uri("/reactive/streams/preference/delete/all")
                 .exchange()
                 .expectStatus().isOk();
     }

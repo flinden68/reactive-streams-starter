@@ -1,7 +1,7 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.controller;
+package nl.elstarit.reactive.controller;
 
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Preference;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.repository.PreferenceRepository;
+import nl.elstarit.reactive.model.Preference;
+import nl.elstarit.reactive.repository.PreferenceRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/sector-knowledge/topic-management-service/preference")
+@RequestMapping("/reactive/streams/preference")
 public class PreferenceController {
 
     private PreferenceRepository preferenceRepository;

@@ -1,10 +1,10 @@
 applications:
-  - name: topic-management-service
+  - name: reactive-streams-starter
     instances: 1
     memory: 768M
     disk_quota: 512M
-    path: target/topic-management-service.jar
-    host: topic-management-service
+    path: target/reactive-streams-starter.jar
+    host: reactive-streams-starter
     services:
     - nutella-circuit-breaker
     - app-autoscaler

@@ -1,7 +1,7 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.controller;
+package nl.elstarit.reactive.controller;
 
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Topic;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.repository.TopicRepository;
+import nl.elstarit.reactive.model.Topic;
+import nl.elstarit.reactive.repository.TopicRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,19 +26,19 @@ public class TopicControllerTest {
     @Before
     public void setUp() throws Exception {
         webTestClient = WebTestClient.bindToController(new TopicController(topicRepository)).build();
-        topicRepository.deleteAll();
+        //topicRepository.deleteAll();
 
         for (int i = 0; i < QTY; i++) {
             Topic topic = new Topic();
             topic.setName("Test" + i);
 
-            topicRepository.save(topic);
+            Mono newTopic = topicRepository.save(topic);
         }
     }
 
     @Test
     public void streamAllTweets() {
-        webTestClient.get().uri("/sector-knowledge/topic-management-service/topic/stream")
+        webTestClient.get().uri("/reactive/streams/topic/stream")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(Topic.class);
@@ -46,7 +46,7 @@ public class TopicControllerTest {
 
     @Test
     public void getAllTopics() {
-        webTestClient.get().uri("/sector-knowledge/topic-management-service/topic/all")
+        webTestClient.get().uri("/reactive/streams/topic/all")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(Topic.class);
@@ -55,23 +55,23 @@ public class TopicControllerTest {
     @Test
     public void getTopicByName() {
         Topic topic = new Topic();
-        topic.setName("test9991111");
+        topic.setName("testCreate");
 
-        topicRepository.save(topic);
+        Mono newTopic =  topicRepository.save(topic);
 
-        webTestClient.get().uri("/sector-knowledge/topic-management-service/topic/test9991111")
+        webTestClient.get().uri("/reactive/streams/topic/testCreate")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
                 .jsonPath("$.id").isNotEmpty()
-                .jsonPath("$.name").isEqualTo("test9991111");
+                .jsonPath("$.name").isEqualTo("testCreate");
     }
 
     @Test
     public void createTopic() {
         Topic topic = new Topic();
         topic.setName("testCreate");
-        webTestClient.post().uri("/sector-knowledge/topic-management-service/topic/create")
+        webTestClient.post().uri("/reactive/streams/topic/create")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .body(Mono.just(topic), Topic.class)
@@ -89,14 +89,14 @@ public class TopicControllerTest {
 
         topicRepository.save(topic);
 
-        webTestClient.delete().uri("/sector-knowledge/topic-management-service/topic/delete/test9991112")
+        webTestClient.delete().uri("/reactive/streams/topic/delete/test9991112")
                 .exchange()
                 .expectStatus().isOk();
     }
 
     @Test
     public void deleteAllTopics() {
-        webTestClient.delete().uri("/sector-knowledge/topic-management-service/topic/delete/all")
+        webTestClient.delete().uri("/reactive/streams/topic/delete/all")
                 .exchange()
                 .expectStatus().isOk();
     }

@@ -1,4 +1,4 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.enums;
+package nl.elstarit.reactive.enums;
 
 public enum Status {
 

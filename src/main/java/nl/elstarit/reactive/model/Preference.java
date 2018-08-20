@@ -1,4 +1,4 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model;
+package nl.elstarit.reactive.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

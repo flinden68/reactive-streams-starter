@@ -1,8 +1,8 @@
-package nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.controller;
+package nl.elstarit.reactive.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.model.Topic;
-import nl.rabobank.gict.crmvirtual.relevance.sectorknowledge.topicmanagementservice.repository.TopicRepository;
+import nl.elstarit.reactive.model.Topic;
+import nl.elstarit.reactive.repository.TopicRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @RestController
-@RequestMapping("/sector-knowledge/topic-management-service/topic")
+@RequestMapping("/reactive/streams/topic")
 public class TopicController {
 
     private TopicRepository topicRepository;

@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: 10000
   ssl:
     enabled: false
 
@@ -37,11 +37,11 @@ spring:
   profiles: local
   data:
     mongodb:
-      uri: mongodb://localhost:27017/topic-store
+      uri: mongodb://localhost:27017/stream-store
 
 service:
   cors:
-    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    origins: http://localhost:8080, http://localhost:8000 #list of domains seperated by a comma
     allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
 swagger:
   enabled: true
@@ -51,11 +51,10 @@ spring:
   profiles: dev
   data:
     mongodb:
-      uri: mongodb://sectorkennisdb:GPgG3YrrL1DsK8U8NxZNg9IKi13qjdd4Se2A1QPCMAtN85URktVATzMFwki9ZynxOFctInePP2FEOAUEJ9km4A==@sectorkennisdb.documents.azure.com:10255/sectorkennisdb?ssl=true&replicaSet=globaldb
-
+      uri: mongodb://localhost:27017/stream-store
 service:
   cors:
-    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    origins: http://localhost:8080, http://localhost:8000 #list of domains seperated by a comma
     allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
 swagger:
   enabled: true
@@ -65,10 +64,10 @@ spring:
   profiles: prod
   data:
     mongodb:
-      uri: mongodb://localhost:27017/topic-store
+      uri: mongodb://localhost:27017/stream-store
 service:
   cors:
-    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    origins: http://localhost:8080, http://localhost:8000 #list of domains seperated by a comma
     allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
 
 swagger:
