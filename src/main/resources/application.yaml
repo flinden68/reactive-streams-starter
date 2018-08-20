@@ -1,0 +1,76 @@
+server:
+  port: 8087
+  ssl:
+    enabled: false
+
+logging:
+  level:
+    root: INFO
+  nl:
+    rabobank:
+      gict:
+        crmvirtual:
+          relevance:
+            sectorknowledge:
+              topicmanagementservice: DEBUG
+
+info:
+  app:
+    name: Topic Management Service
+    version: 1.0.0-SNAPSHOT
+    description: Topic Management Service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: Topic Management Service
+    stub: false
+  profiles:
+    active: local #@activeProfile@
+
+---
+spring:
+  profiles: local
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/topic-store
+
+service:
+  cors:
+    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
+swagger:
+  enabled: true
+
+---
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      uri: mongodb://sectorkennisdb:GPgG3YrrL1DsK8U8NxZNg9IKi13qjdd4Se2A1QPCMAtN85URktVATzMFwki9ZynxOFctInePP2FEOAUEJ9km4A==@sectorkennisdb.documents.azure.com:10255/sectorkennisdb?ssl=true&replicaSet=globaldb
+
+service:
+  cors:
+    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
+swagger:
+  enabled: true
+
+---
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/topic-store
+service:
+  cors:
+    origins: http://localhost:8080, http://localhost:8000, https://www.rabobank.nl, http://bankieren-team-110.portaal.rabobank.nl, https://wwwverificatie.ratobank.nl, https://wwwacceptatie.rabobank.nl #list of domains seperated by a comma
+    allowedMethods: POST, OPTIONS, GET, PATCH, DELETE
+
+swagger:
+  enabled: false
+---

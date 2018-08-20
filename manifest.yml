@@ -1,0 +1,10 @@
+applications:
+  - name: topic-management-service
+    instances: 1
+    memory: 768M
+    disk_quota: 512M
+    path: target/topic-management-service.jar
+    host: topic-management-service
+    services:
+    - nutella-circuit-breaker
+    - app-autoscaler
