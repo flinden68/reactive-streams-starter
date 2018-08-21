@@ -16,8 +16,8 @@ public class WebSecurityConfiguration {
     return http
             .csrf().disable()
             .authorizeExchange()
-            .pathMatchers("/sector-knowledge/topic-management-service/topic/**").permitAll()
-            .pathMatchers("/sector-knowledge/topic-management-service/preference/**").permitAll()
+            .pathMatchers("/reactive/streams/topic/**").permitAll()
+            .pathMatchers("/reactive/streams/preference/**").permitAll()
             .pathMatchers("/actuator/**").permitAll()
             .anyExchange().authenticated()
             .and()

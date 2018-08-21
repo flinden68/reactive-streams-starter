@@ -46,6 +46,9 @@ service:
 swagger:
   enabled: true
 
+topic-management:
+  url: http://localhost:10000/reactive/streams/preference
+
 ---
 spring:
   profiles: dev
@@ -59,6 +62,8 @@ service:
 swagger:
   enabled: true
 
+topic-management:
+  url: http://localhost:10000/reactive/streams/preference
 ---
 spring:
   profiles: prod
@@ -72,4 +77,7 @@ service:
 
 swagger:
   enabled: false
+
+topic-management:
+  url: http://localhost:10000/reactive/streams/preference
 ---
