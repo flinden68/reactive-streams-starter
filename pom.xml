@@ -5,7 +5,7 @@
 
 	<groupId>nl.elstarit.reactive</groupId>
 	<artifactId>reactive-streams-starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>reactive-streams-starter</name>
@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<docker.image.prefix>elstarit</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -84,7 +85,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>development</id>
+			<id>dev</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -93,7 +94,7 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>production</id>
+			<id>prod</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -110,22 +111,40 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.11</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
-	<distributionManagement>
-		<!-- use the following if you're not using a snapshot version. -->
+	<repositories>
 		<repository>
-			<id>releases</id>
-			<name>releases</name>
-			<url>https://maven.rabobank.nl/nexus/content/repositories/ip-releases</url>
+			<id>central</id>
+			<url>http://central.maven.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
 		</repository>
-		<!-- use the following if you ARE using a snapshot version. -->
-		<snapshotRepository>
-			<id>snapshot</id>
-			<name>snapshots</name>
-			<url>https://maven.rabobank.nl/nexus/content/repositories/ip-snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+		<repository>
+			<id>jahia</id>
+			<url>http://maven.jahia.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
 </project>
