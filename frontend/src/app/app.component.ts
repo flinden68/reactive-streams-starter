@@ -15,10 +15,10 @@ export class AppComponent implements OnInit {
   constructor(private preferenceService: PreferenceService) { }
 
   ngOnInit() {
-    this.getPreferences();
+    //this.getPreferences();
   }
 
-  getPreferences(){
+  loadPreferences(){
     this.preferenceService.getPreferences()
       .subscribe(preferences => this.preferences = preferences);
   }
