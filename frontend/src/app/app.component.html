@@ -28,6 +28,8 @@
           <li *ngFor="let topic of preference.topics">
             <span class="badge">{{topic.name}}</span>
         </ul>
+        <div>{{preference.created}}</div>
+        <div>{{preference.modified}}</div>
         <button class="btn btn-danger float-right" title="delete preference"
                 (click)="deletePreference(preference)">Delete
         </button>
@@ -35,7 +37,29 @@
     </div>
   </div>
   <div class="tab-pane tab-body fade" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
-    <h2>Topics</h2>
+    <button class="btn btn-primary button-margin" title="load topics"
+            (click)="loadTopics()">Load Topics
+    </button>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create topic</h5>
+        <label>name:
+          <input ngModel="topic.name" placeholder="name"/>
+        </label>
+      </div>
+    </div>
+    <div class="card" *ngFor="let topic of topics">
+      <div class="card-body">
+        <h5 class="card-title">{{topic.name}}</h5>
+        <strong>details</strong>
+        <div>{{topic.id}}</div>
+        <div>{{topic.created}}</div>
+        <div>{{topic.modified}}</div>
+        <button class="btn btn-danger float-right" title="delete topic"
+                (click)="deleteTopic(topic)">Delete
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
