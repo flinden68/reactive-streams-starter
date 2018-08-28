@@ -37,14 +37,18 @@
     </div>
   </div>
   <div class="tab-pane tab-body fade" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
-    <button class="btn btn-primary button-margin" title="load topics"
-            (click)="loadTopics()">Load Topics
+    <button class="btn btn-primary button-margin" title="reload topics"
+            (click)="loadTopics()">Reload Topics
     </button>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Create topic</h5>
         <label>name:
-          <input ngModel="topic.name" placeholder="name"/>
+          <input #topicName
+                 (keyup.enter)="createTopic(topicName.value)"
+                 (blur)="createTopic(topicName.value); topicName.value='' ">
+
+          <button (click)="createTopic(topicName.value)">Add</button>
         </label>
       </div>
     </div>

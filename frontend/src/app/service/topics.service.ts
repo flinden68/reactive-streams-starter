@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Observable, Observer, of} from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
-import { Preference } from '../model/preference';
 import {Topic} from "../model/topic";
 
 const httpOptions = {
@@ -16,14 +15,8 @@ export class TopicService {
 
   private serviceUrl = 'http://localhost:10000/reactive/streams';  // URL to web api
 
-  constructor(
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) {
 
-  public getTopicsAsStream() {
-    return this.http.get<Topic[]>(this.serviceUrl + '/topic/stream')
-      .pipe(
-        catchError(this.handleError('getTopicsAsStream', []))
-      );
   }
 
   public getTopics() {
@@ -84,7 +77,7 @@ export class TopicService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    console.log(`PreferenceService: ${message}`);
+    console.log(`TopicService: ${message}`);
   }
 
 }

@@ -15,12 +15,14 @@ export class AppComponent implements OnInit {
   preferences : Preference[];
   topics : Topic[];
 
-  @Input() topic : Topic
+  topic : Topic
+  //topicName : string = '';
 
   constructor(private preferenceService: PreferenceService, private topicService : TopicService) { }
 
   ngOnInit() {
     //this.getPreferences();
+    this.loadTopics();
   }
 
   loadPreferences(){
@@ -38,9 +40,13 @@ export class AppComponent implements OnInit {
       .subscribe(topics => this.topics = topics);
   }
 
-  createTopic(){
-    this.topicService.createTopic(this.topic)
-      .subscribe(topic => this.topics.push(topic));
+  createTopic(topicName:string){
+    if(topicName){
+      let newTopic = new Topic();
+      newTopic.setName(topicName)
+      this.topicService.createTopic(newTopic)
+        .subscribe(topic => this.topics.push(topic));
+    }
   }
 
   deleteTopic(topic: Topic):void {
