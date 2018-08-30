@@ -10,7 +10,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class WebSecurityConfiguration {
 
-
   @Bean
   SecurityWebFilterChain springWebFilterChain(ServerHttpSecurity http) throws Exception {
     return http
@@ -18,6 +17,8 @@ public class WebSecurityConfiguration {
             .authorizeExchange()
             .pathMatchers("/reactive/streams/topic/**").permitAll()
             .pathMatchers("/reactive/streams/preference/**").permitAll()
+            .pathMatchers("/reactive/streams/router/topic/**").permitAll()
+            .pathMatchers("/reactive/streams/router/preference/**").permitAll()
             .pathMatchers("/actuator/**").permitAll()
             .anyExchange().authenticated()
             .and()
