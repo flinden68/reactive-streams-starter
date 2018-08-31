@@ -19,7 +19,6 @@ public class TopicHandler {
   }
 
   public Mono<ServerResponse> allTopics(ServerRequest req) {
-    log.info("BOE");
     return ServerResponse.ok().body(topicRepository.findAll(), Topic.class);
   }
 
