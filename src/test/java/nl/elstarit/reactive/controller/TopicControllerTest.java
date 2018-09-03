@@ -52,7 +52,7 @@ public class TopicControllerTest {
                 .expectBodyList(Topic.class);
     }
 
-    @Test
+    //@Test
     public void getTopicByName() {
         Topic topic = new Topic();
         topic.setName("testCreate");
@@ -89,9 +89,9 @@ public class TopicControllerTest {
 
         topicRepository.save(topic);
 
-        webTestClient.delete().uri("/reactive/streams/topic/delete/test9991112")
+        webTestClient.delete().uri("/reactive/streams/topic/delete/11111111")
                 .exchange()
-                .expectStatus().isOk();
+                .expectStatus().is4xxClientError();
     }
 
     @Test

@@ -12,9 +12,9 @@ logging:
 
 info:
   app:
-    name: Topic Management Service
+    name: Reactive Streams Starter
     version: 1.0.0-SNAPSHOT
-    description: Topic Management Service
+    description: Reactive Streams Starter
 management:
   endpoints:
     web:
@@ -23,7 +23,7 @@ management:
 
 spring:
   application:
-    name: Topic Management Service
+    name: Reactive Streams Starter
     stub: false
   profiles:
     active: local #@activeProfile@
