@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<docker.image.prefix>elstarit</docker.image.prefix>
+		<swagger.version>3.0.0-SNAPSHOT</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -70,6 +71,25 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-spring-webflux</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
     </dependencies>
@@ -136,6 +156,13 @@
 			<url>http://central.maven.org/maven2</url>
 			<releases>
 				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>jfrog</id>
+			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+			<releases>
+				<enabled>false</enabled>
 			</releases>
 		</repository>
 		<repository>

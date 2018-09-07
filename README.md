@@ -43,3 +43,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 bluemix login -u userName -o orgName -s spaceName
 bluemix app push reactive-streams-starter
+```
+
+##Swagger
+There is a Swagger UI, http://localhost:10000/swagger-ui.html, where you can test the endpoints

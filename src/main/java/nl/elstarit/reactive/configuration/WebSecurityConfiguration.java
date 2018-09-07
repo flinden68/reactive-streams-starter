@@ -20,6 +20,9 @@ public class WebSecurityConfiguration {
             .pathMatchers("/reactive/streams/router/topic/**").permitAll()
             .pathMatchers("/reactive/streams/router/preference/**").permitAll()
             .pathMatchers("/actuator/**").permitAll()
+            .pathMatchers("/**").permitAll()
+            .pathMatchers("/v2/**").permitAll()
+            .pathMatchers("/swagger-resources/**").permitAll()
             .anyExchange().authenticated()
             .and()
             .build();
