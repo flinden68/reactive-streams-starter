@@ -31,7 +31,7 @@ public class PreferenceService {
       .onStatus(HttpStatus::is4xxClientError, clientResponse ->
         Mono.error(new RuntimeException("Preferences could be found: " + userId))
       )
-      .onStatus(HttpStatus::is4xxClientError, clientResponse ->
+      .onStatus(HttpStatus::is5xxServerError, clientResponse ->
         Mono.error(new RuntimeException("Something went wrong: " + userId))
       )
       .bodyToMono(Preference.class);
@@ -49,7 +49,7 @@ public class PreferenceService {
       .onStatus(HttpStatus::is4xxClientError, clientResponse ->
         Mono.error(new RuntimeException("Preferences could be found: " + preference.getUserid()))
       )
-      .onStatus(HttpStatus::is4xxClientError, clientResponse ->
+      .onStatus(HttpStatus::is5xxServerError, clientResponse ->
         Mono.error(new RuntimeException("Something went wrong: " + preference.getUserid()))
       )
       .bodyToMono(Preference.class);
@@ -66,7 +66,7 @@ public class PreferenceService {
       .onStatus(HttpStatus::is4xxClientError, clientResponse ->
         Mono.error(new RuntimeException("Preferences could be deleted: " + userId))
       )
-      .onStatus(HttpStatus::is4xxClientError, clientResponse ->
+      .onStatus(HttpStatus::is5xxServerError, clientResponse ->
         Mono.error(new RuntimeException("Something went wrong: " + userId))
       )
       .bodyToMono(String.class);
