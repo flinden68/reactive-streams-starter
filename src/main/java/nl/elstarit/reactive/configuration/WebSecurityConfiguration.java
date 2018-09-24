@@ -15,10 +15,7 @@ public class WebSecurityConfiguration {
     return http
             .csrf().disable()
             .authorizeExchange()
-            .pathMatchers("/reactive/streams/topic/**").permitAll()
-            .pathMatchers("/reactive/streams/preference/**").permitAll()
-            .pathMatchers("/reactive/streams/router/topic/**").permitAll()
-            .pathMatchers("/reactive/streams/router/preference/**").permitAll()
+            .pathMatchers("/reactive/streams/**/**").permitAll()
             .pathMatchers("/actuator/**").permitAll()
             .pathMatchers("/**").permitAll()
             .pathMatchers("/v2/**").permitAll()

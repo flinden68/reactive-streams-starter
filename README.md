@@ -21,22 +21,22 @@ install the project with maven, mvn clean install
 ### Run application
 mvn spring-boot:run
 
-###Build runnable JAR file
+### Build runnable JAR file
 mvn package
 
-###Build docker image file
+### Build docker image file
 mvn package docker:build
 
-####Run in Docker
+#### Run in Docker
 docker run -p 10000:10000 -t elstarit/reactive-streams-starter
 
-####Stop Docker container
+#### Stop Docker container
 docker ps
 
-####Will give you a container id and run
+#### Will give you a container id and run
 docker stop <containerid>
 
-###Run profiles
+### Run profiles
 ```
 mvn spring-boot:run -Pprod
 ```
@@ -45,11 +45,27 @@ the Spring boot 2.0 way
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-##Push to CloudFoundry
+## Push to CloudFoundry
 ```
 bluemix login -u userName -o orgName -s spaceName
 bluemix app push reactive-streams-starter
 ```
 
-##Swagger
-There is a Swagger UI, http://localhost:10000/swagger-ui.html, where you can test the endpoints
+## Swagger
+There is a Swagger UI
+```
+http://localhost:10000/swagger-ui.html
+```
+where you can test the endpoints
+
+## NEW Router endpoints
+```
+http://localhost:10000/reactive/streams/router/topic/all
+```
+
+## Frontend
+```
+http://localhost:4200/
+```
+
+
