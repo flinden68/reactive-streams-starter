@@ -3,6 +3,8 @@ import {PreferenceService} from "./service/preferences.service";
 import {Preference} from "./model/preference";
 import {Topic} from "./model/topic";
 import {TopicService} from "./service/topics.service";
+import {Suggestion} from "./model/suggestion";
+import {SuggestionService} from "./service/suggestions.service";
 
 @Component({
   selector: 'app-root',
@@ -14,11 +16,13 @@ export class AppComponent implements OnInit {
 
   preferences : Preference[];
   topics : Topic[];
+  suggestions: Suggestion[];
 
-  topic : Topic
+  topic : Topic;
+  suggestion: Suggestion;
   //topicName : string = '';
 
-  constructor(private preferenceService: PreferenceService, private topicService : TopicService) { }
+  constructor(private preferenceService: PreferenceService, private topicService : TopicService, private suggestionService : SuggestionService) { }
 
   ngOnInit() {
     //this.getPreferences();
@@ -52,5 +56,24 @@ export class AppComponent implements OnInit {
   deleteTopic(topic: Topic):void {
     this.topics = this.topics.filter(h => h !== topic);
     this.topicService.deleteTopic(topic.name).subscribe();
+  }
+
+  loadSuggestions(){
+    this.suggestionService.getSuggestions()
+      .subscribe(suggestions => this.suggestions = suggestions);
+  }
+
+  createSuggestion(suggestionName:string){
+    if(suggestionName){
+      let newSuggestion = new Suggestion();
+      newSuggestion.setName(suggestionName)
+      this.suggestionService.createSuggestion(newSuggestion)
+        .subscribe(suggestion => this.suggestions.push(suggestion));
+    }
+  }
+
+  deleteSuggestion(suggestion: Suggestion):void {
+    this.suggestions = this.suggestions.filter(h => h !== suggestion);
+    this.suggestionService.deleteSuggestion(suggestion.name).subscribe();
   }
 }
