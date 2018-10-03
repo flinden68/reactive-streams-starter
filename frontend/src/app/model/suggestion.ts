@@ -3,7 +3,7 @@ export class Suggestion {
   name:string;
   created:Date;
   modified:Date;
-  
+
   setName(name:string){
     this.name = name;
   }
