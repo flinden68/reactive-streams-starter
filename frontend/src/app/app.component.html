@@ -14,6 +14,9 @@
   <li class="nav-item">
     <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="profile" aria-selected="false">Topics</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab3" role="tab" aria-controls="profile" aria-selected="false">Suggestions</a>
+  </li>
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane tab-body fade show active" id="tab1" role="tabpanel" aria-labelledby="home-tab">
@@ -61,6 +64,37 @@
         <div>{{topic.modified}}</div>
         <button class="btn btn-danger float-right" title="delete topic"
                 (click)="deleteTopic(topic)">Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suggestion Tab -->
+  <div class="tab-pane tab-body fade" id="tab3" role="tabpanel" aria-labelledby="profile-tab">
+    <button class="btn btn-primary button-margin" title="reload suggestions"
+            (click)="loadSuggestions()">Reload Suggestion
+    </button>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create suggestion</h5>
+        <label>name:
+          <input #suggestionName
+                 (keyup.enter)="createSuggestion(suggestionName.value)"
+                 (blur)="createSuggestion(suggestionName.value); suggestionName.value='' ">
+
+          <button (click)="createSuggestion(suggestionName.value)">Add</button>
+        </label>
+      </div>
+    </div>
+    <div class="card" *ngFor="let suggestion of suggestions">
+      <div class="card-body">
+        <h5 class="card-title">{{suggestion.name}}</h5>
+        <strong>details</strong>
+        <div>{{suggestion.id}}</div>
+        <div>{{suggestion.created}}</div>
+        <div>{{suggestion.modified}}</div>
+        <button class="btn btn-danger float-right" title="delete suggestion"
+                (click)="deleteSuggestion(suggestion)">Delete
         </button>
       </div>
     </div>

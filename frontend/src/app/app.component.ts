@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     //this.getPreferences();
     this.loadTopics();
+    this.loadSuggestions();
   }
 
   loadPreferences(){
