@@ -46,9 +46,17 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
 ## Push to CloudFoundry
+
+### IBM Cloud
 ```
 bluemix login -u userName -o orgName -s spaceName
-bluemix app push reactive-streams-starter
+bluemix app push reactive-streams-starter -f manifest.yml
+```
+
+### Pivotal
+```
+cf login -u userName -o orgName -s spaceName
+cf push reactive-streams-starter -f manifest.yml
 ```
 
 ## Swagger
