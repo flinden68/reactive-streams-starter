@@ -6,5 +6,5 @@ applications:
     path: target/reactive-streams-starter.jar
     host: reactive-streams-starter
     services:
-    - nutella-circuit-breaker
+    - circuit-breaker
     - app-autoscaler
