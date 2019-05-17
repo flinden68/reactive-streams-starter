@@ -27,6 +27,7 @@ public class PreferenceService {
     return this.webClient
       .get()
       .uri(topicManagementUrl+"/{userId}", userId)
+
       .retrieve()
       .onStatus(HttpStatus::is4xxClientError, clientResponse ->
         Mono.error(new RuntimeException("Preferences could be found: " + userId))
