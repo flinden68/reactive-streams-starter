@@ -1,5 +1,6 @@
 package nl.elstarit.reactive.controller;
 
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import nl.elstarit.reactive.model.Topic;
 import nl.elstarit.reactive.repository.TopicRepository;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequestMapping("/reactive/streams/topic")
+@Api(tags = "Topic Controller")
 public class TopicController {
 
     private TopicRepository topicRepository;

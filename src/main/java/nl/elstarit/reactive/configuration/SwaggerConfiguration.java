@@ -3,6 +3,9 @@ package nl.elstarit.reactive.configuration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.Errors;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -19,6 +22,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .enable(true)
+                .ignoredParameterTypes(Mono.class, Flux.class)
                 .select()
                 .paths(PathSelectors.ant("/reactive/streams/**"))
                 .build();

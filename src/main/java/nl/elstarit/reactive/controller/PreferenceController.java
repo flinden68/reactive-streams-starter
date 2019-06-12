@@ -1,5 +1,6 @@
 package nl.elstarit.reactive.controller;
 
+import io.swagger.annotations.Api;
 import nl.elstarit.reactive.model.Preference;
 import nl.elstarit.reactive.repository.PreferenceRepository;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/reactive/streams/preference")
+@Api(tags = "Preference Controller")
 public class PreferenceController {
 
     private PreferenceRepository preferenceRepository;

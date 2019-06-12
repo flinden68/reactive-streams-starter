@@ -1,5 +1,6 @@
 package nl.elstarit.reactive.controller;
 
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import nl.elstarit.reactive.model.Suggestion;
 import nl.elstarit.reactive.model.Topic;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequestMapping("/reactive/streams/suggestion")
+@Api(tags = "Suggestion Controller")
 public class SuggestionController {
 
     private SuggestionRepository suggestionRepository;
