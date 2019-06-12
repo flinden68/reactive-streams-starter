@@ -32,7 +32,9 @@ export class AppComponent implements OnInit {
 
   loadPreferences(){
     this.preferenceService.getPreferences()
-      .subscribe(preferences => this.preferences = preferences);
+      .subscribe(preferences => {
+        this.preferences = preferences
+      });
   }
 
   deletePreference(preference: Preference):void {

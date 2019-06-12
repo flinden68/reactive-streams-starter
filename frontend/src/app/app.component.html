@@ -19,6 +19,7 @@
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
+  <!-- Preferences Tab -->
   <div class="tab-pane tab-body fade show active" id="tab1" role="tabpanel" aria-labelledby="home-tab">
     <button class="btn btn-primary button-margin" title="load preferences"
             (click)="loadPreferences()">Load preferences
@@ -39,6 +40,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Topics Tab -->
   <div class="tab-pane tab-body fade" id="tab2" role="tabpanel" aria-labelledby="profile-tab">
     <button class="btn btn-primary button-margin" title="reload topics"
             (click)="loadTopics()">Reload Topics
@@ -69,7 +72,7 @@
     </div>
   </div>
 
-  <!-- Suggestion Tab -->
+  <!-- Suggestions Tab -->
   <div class="tab-pane tab-body fade" id="tab3" role="tabpanel" aria-labelledby="profile-tab">
     <button class="btn btn-primary button-margin" title="reload suggestions"
             (click)="loadSuggestions()">Reload Suggestion

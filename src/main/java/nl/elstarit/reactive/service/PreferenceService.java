@@ -77,7 +77,7 @@ public class PreferenceService {
   public Mono<Preference> fallbackFindPreferenceById(String userId) {
     Preference preference = new Preference();
     preference.setId(userId);
-    return Mono.just(preference);
+    return Mono.empty();
   }
 
   public Mono<Preference> fallbackSavePreference(Preference preference){
