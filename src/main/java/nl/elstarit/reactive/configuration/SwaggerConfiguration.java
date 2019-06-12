@@ -22,6 +22,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .enable(true)
+                .enableUrlTemplating(false)
                 .ignoredParameterTypes(Mono.class, Flux.class)
                 .select()
                 .paths(PathSelectors.ant("/reactive/streams/**"))
