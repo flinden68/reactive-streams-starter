@@ -46,15 +46,18 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
 ## Push to CloudFoundry
+For Cloud Foundry you need the cloud Foundry CLI, https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
 
 ### IBM Cloud
 ```
-bluemix login -u userName -o orgName -s spaceName
-bluemix app push reactive-streams-starter -f manifest.yml
+cf login --sso -a https://api.ng.bluemix.net (SSO login, will be asked for a 1 time password)
+cf login -u userName -o orgName -s spaceName
+cf app push reactive-streams-starter -f manifest.yml
 ```
 
 ### Pivotal
 ```
+cf login --sso -a api.run.pivotal.io (SSO login, will be asked for a 1 time password)
 cf login -u userName -o orgName -s spaceName
 cf push reactive-streams-starter -f manifest.yml
 ```
